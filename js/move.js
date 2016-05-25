@@ -1,9 +1,4 @@
 
-//版权 北京智能社©, 保留所有权利
-/**
-*	Set Order By strive.
-*	copyright by other.
-**/
 //t  当前时间
 //b  初始值
 //c  总距离
