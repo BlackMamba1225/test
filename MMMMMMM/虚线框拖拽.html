@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>完美拖拽</title>
+    <title>Title</title>
     <script>
         window.onload=function(){
             var oDiv=document.getElementById('div1');
@@ -10,19 +10,27 @@
                 var oEvent=ev || event;
                 var disX=oEvent.clientX-oDiv.offsetLeft;
                 var disY=oEvent.clientY-oDiv.offsetTop;
+                var oDiv2=document.createElement('div');
+                oDiv2.className='div2';
+                oDiv2.style.left=oDiv.offsetLeft+'px';
+                oDiv2.style.top=oDiv.offsetTop+'px';
+                document.body.appendChild(oDiv2);
                 document.onmousemove=function(ev){
                     var oEvent=ev || event;
                     var left=oEvent.clientX-disX+'px';
                     var top=oEvent.clientY-disY+'px';
-                    oDiv.style.left=left;
-                    oDiv.style.top=top;
-                    oDiv.setCaptrue && oDiv.setCapture();
+                    oDiv2.style.left=left;
+                    oDiv2.style.top=top;
                 };
                 document.onmouseup=function(){
                     document.onmousemove=null;
-                    document.onmouseup=null;
+                    document.onmouseuo=null;
+                    oDiv.style.left=oDiv2.offsetLeft+'px';
+                    oDiv.style.top=oDiv2.offsetTop+'px';
+                    document.body.removeChild(oDiv2);
                     oDiv.releaseCapture && oDiv.releaseCapture();
                 };
+                oDiv.setCapture && oDiv.setCapture();
                 return false;
             };
         };
@@ -32,6 +40,12 @@
             width:200px;
             height:200px;
             background:red;
+            position:absolute;
+        }
+        .div2{
+            width:200px;
+            height:200px;
+            border:10px dashed #000;
             position:absolute;
         }
     </style>

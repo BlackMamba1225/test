@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完美拖拽</title>
+    <script>
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            oDiv.onmousedown=function(ev){
+                var oEvent=ev || event;
+                var disX=oEvent.clientX-oDiv.offsetLeft;
+                var disY=oEvent.clientY-oDiv.offsetTop;
+                document.onmousemove=function(ev){
+                    var oEvent=ev || event;
+                    var left=oEvent.clientX-disX+'px';
+                    var top=oEvent.clientY-disY+'px';
+                    oDiv.style.left=left;
+                    oDiv.style.top=top;
+                    oDiv.setCaptrue && oDiv.setCapture();
+                };
+                document.onmouseup=function(){
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                    oDiv.releaseCapture && oDiv.releaseCapture();
+                };
+                return false;
+            };
+
+            var a = 6;
+            setTimeout(function () {
+                alert(a);
+                a = 666;
+            }, 1000);
+            a = 66;
+        };
+    </script>
+    <style>
+        #div1{
+            width:200px;
+            height:200px;
+            background:red;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+</html>
