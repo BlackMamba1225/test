@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联动全选</title>
+    <script>
+        window.onload=function(){
+            var oBtn=document.getElementsByTagName('input')[0];
+            var aInp=document.getElementsByClassName('div1')[0].getElementsByTagName('input');
+
+            oBtn.onclick=function(){
+                if(oBtn.checked == true){
+                    for(var i=0;i<aInp.length;i++){
+                        aInp[i].checked=true;
+                    }
+                }else{
+                    for(var i=0;i<aInp.length;i++){
+                        aInp[i].checked=false;
+                    }
+                }
+            };
+
+            for (var i=0; i<aInp.length; i++)
+            {
+                aInp[i].onclick=function (){
+                    var n=0;
+                    for (var i=0; i<aInp.length; i++)
+                    {
+                        if (aInp[i].checked == true)
+                        {
+                            n++;
+                        }
+                    }
+                    if (n == aInp.length)
+                    {
+                        oBtn.checked=true;
+                    }
+                    else
+                    {
+                        oBtn.checked=false;
+                    }
+                    console.log(n)
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="checkbox">
+    <div class="div1">
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+        <input type="checkbox"><br>
+    </div>
+
+</body>
+</html>
