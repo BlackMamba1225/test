@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0;}
+div{ width:986px; overflow:hidden;}
+ul{ width:300px; border:red solid 1px; margin:10px; float:left}
+li{ list-style:none; background:#ccc; margin:10px; text-align:center; font-size:30px; }
+</style>
+<script>
+window.onload=function(){
+	var oDiv1=document.getElementById('div1');
+	var aTmp=oDiv1.getElementsByTagName('ul');
+	var aUl=[];
+	var n=0;
+	var aColor=['red','pink','#ccc','green','blue'];
+	
+	for(var i=0;i<aTmp.length;i++)
+	{
+		aUl.push(aTmp[i]);	
+	}
+	
+	create();
+	
+	window.onscroll=function(){
+		var scrollTop=document.documentElement.scrollTop || document.body.scrollTop;
+		var clientHeight=document.documentElement.clientHeight;
+		var h=scrollTop+clientHeight;
+		if(document.body.offsetHeight-100 < h)
+		{
+			create();
+		}	
+	};
+	
+	function create()
+	{
+		n++;
+		
+		if(n>=6)
+		{
+			return false;	
+		}
+		
+		for(var i=0;i<20;i++)
+		{
+			var oLi=document.createElement('li');
+			oLi.innerHTML=i;
+			oLi.style.height=rnd(100,300)+'px';	
+			oLi.style.background=aColor[n-1];
+			aUl.sort(function(a,b){
+				return a.offsetHeight-b.offsetHeight;	
+			})
+			aUl[0].appendChild(oLi);
+		}		
+	}
+};
+
+function rnd(m,n)
+{
+	return Math.floor(Math.random()*(m-n)+n);	
+}
+</script>
+</head>
+<div id="div1">
+	<ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<body>
+</body>
+</html> 
