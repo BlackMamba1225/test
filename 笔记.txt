@@ -25,3 +25,15 @@ defer是表示这个脚本可以延迟到文档完全被解析和显示之后再
 <script defer src="myscript.js"></script>
 有 defer，加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
 
+5.html标签的默认边距
+body margin(top bottom) 6px
+p margin 6px
+ul&&ol margin 16px  padding-left 40px
+dl margin 16px
+这些margin都是上下的margin 因为左右都是100%的因为是块元素；
+
+尽量不要写*{margin:0; padding:0;}因为大部分的元素都是没有默认的margin的比如一些行内元素，因为它本身就不支宽高。并且块元素里面大部分也没有内边距padding，这样会节省浏览器对页面渲染时候的时间以及性能；
+
+
+
+
