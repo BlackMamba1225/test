@@ -4,7 +4,8 @@
 link的加载模式是在加载html之前就已经解析完了css，而import的加载模式是在加载完html之后再加载解析css；
 link是有语义化的标签，没有兼容问题，而import在比较低级的浏览器是有兼容那个问题的，因为他是css2级里面出现的定义；
 link标签可以被JavaScript用dom去控制而import不可以被操作控制；
-link除了加载中css样式，还能加载rss并可以设定rel的属性值，而import只能加载css；
+link除了加载中css样式，还能加载rss并可以设定rel的属性值，而import只能加载cs
+s；
 
 2.checkbox的indeterminate属性可以设置成true or false，可以设置checkbox的样式；
 
